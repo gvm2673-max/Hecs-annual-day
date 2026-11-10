@@ -39,11 +39,9 @@ export const HecsLogo: React.FC<HecsLogoProps> = ({
       className={`object-contain transition-opacity duration-200 ${className}`}
       loading="eager"
       onError={(e) => {
-        // Fallback styling if offline/blocked without altering DOM layout
         const target = e.currentTarget;
         target.onerror = null;
       }}
     />
   );
 };
-
