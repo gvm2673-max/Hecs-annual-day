@@ -23,7 +23,7 @@ export const THEME = {
   }
 } as const;
 
-interface HecsLogoProps {
+export interface HecsLogoProps {
   className?: string;
   alt?: string;
 }
@@ -32,16 +32,15 @@ export const HecsLogo: React.FC<HecsLogoProps> = ({
   className = 'h-9 w-auto',
   alt = 'HECS — Huber Enviro Care Systems'
 }) => {
-  return (
-    <img
-      src={HECS_LOGO_URL}
-      alt={alt}
-      className={`object-contain transition-opacity duration-200 ${className}`}
-      loading="eager"
-      onError={(e) => {
-        const target = e.currentTarget;
-        target.onerror = null;
-      }}
-    />
-  );
+  return React.createElement('img', {
+    src: HECS_LOGO_URL,
+    alt,
+    className: `object-contain transition-opacity duration-200 ${className}`,
+    loading: 'eager',
+    onError: (e: React.SyntheticEvent<HTMLImageElement>) => {
+      const target = e.currentTarget;
+      target.onerror = null;
+    }
+  });
 };
+
